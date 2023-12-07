@@ -1,4 +1,4 @@
-class CreateLike < ActiveRecord::Migration[7.1]
+class Like < ActiveRecord::Migration[7.1]
   def change
     create_table :likes do |t|
       t.references  :user, null: false, foreign_key: {to_table: 'users'}, index: true
