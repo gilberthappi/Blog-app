@@ -1,48 +1,114 @@
-![](https://img.shields.io/badge/Microverse-blueviolet)
-# Rails Blog App
 
-> In this project, I created all controllers and views for my Blog app. I added simple placeholders for my views with plain HTML.
+# 🌷 Rails Blog  🌷
 
-## Built With
+# 📗 Table of Contents
 
-- Ruby.
-- Rails.
-- PostgreSQL.
-- Linters.
+- [🌷 Rails Blog  🌷](#-rails-blog--)
+- [📗 Table of Contents](#-table-of-contents)
+- [📖 \[Rails-Blog\] ](#-rails-blog-)
+  - [🛠 Built With ](#-built-with-)
+    - [Tech Stack ](#tech-stack-)
+    - [🌸🌷 Key Features ](#-key-features-)
+  - [💻 Getting Started ](#-getting-started-)
+    - [🌷Setup](#setup)
+  - [🌷 Author ](#-author-)
+  - [🔭🌷 Future Features ](#-future-features-)
+  - [🤝 Contributing ](#-contributing-)
+  - [⭐️ Show your support ](#️-show-your-support-)
+  - [🙏 Acknowledgments ](#-acknowledgments-)
+  - [📝 License ](#-license-)
 
-## Install
+<!-- PROJECT DESCRIPTION -->
 
-- Install Ruby based on your OS from [HERE](https://www.ruby-lang.org/en/downloads/).
-- Install Rails by running this order in your terminal `gem install rails` (good luck with that).
-- Install PostgreSQL from this [link](https://www.postgresql.org/download/).
+# 📖 [Rails-Blog] <a name="about-project"></a>
+*Rails-Blog* is a blog website which works like a platform that displays several posts. 
+It gives the functionality to add comments and express user's likes on favorite posts.
+<br/>
 
-## Getting started
+## 🛠 Built With <a name="built-with"></a>
 
-1. Clone the project using git-bash or Githup Desktop.
-2. Open the project folder with VSCode or any Editor.
-3. Open terminal and navigate to the project folder.
-4. Install all gems by run this command `bundle install`
-5. Open `database.yml` file inside `./config` folder and put your username and password.
-6. Run `rails db:create` and `rails db:migrate` to create and migrate the database then run `rails db:seed` to seed data if there's any.
-7. Type `rails s` to run live server.
-8. Open your browser on this [127.0.0.1:3000](127.0.0.1:3000)
+### Tech Stack <a name="tech-stack"></a>
 
-## Tests
+<details>
+<summary>Ruby🌷</summary>
+  <ul>
+    <li><a href="https://www.ruby-lang.org/es/">Ruby🌷</a></li>
+  </ul>
+  </details>
+  <details>
+  <summary>Rails🌷</summary>
+  <ul>
+    <li><a href="https://rubyonrails.org/">Rails🌷</a></li>
+  </ul>
+</details>
 
-1. insure that you run `bundle install` on your terminal first.
-2. To run tests run this command `rspec`.
+### 🌸🌷 Key Features <a name="key-features"></a>
+- **[Write blog post]**
+- **[Comment on blog post]**
+- **[Like blog posts]**
 
-## Author
 
-👨‍💻 **Eng Happi**
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## 💻 Getting Started <a name="getting-started"></a>
+
+To get a local copy up and running, follow these steps.
+
+### 🌷Setup
+
+Clone this repository to your desired folder:
+
+
+```sh
+  cd my-folder
+  git clone https://github.com/gilberthappi/Blog-app.git
+```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## 🌷 Author <a name="author"></a>
+
+🌸**👨‍💻 **Eng Happi**
 
 - GitHub: [@Eng Happi](https://github.com/gilberthappi)
 - Twitter: [@Eng Happi](https://twitter.com/dushimimanagil3)
 - LinkedIn: [@Eng Happi](https://www.linkedin.com/in/dushimimana-gilbert-happi-997b2a262/)
+  
 
-## Show your support
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-Give a ⭐️ if you like this project!
-## 📝 License
+## 🔭🌷 Future Features <a name="future-features"></a>
+
+- [ ] **[Add more functionalities to the interface design.]**
+  
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## 🤝 Contributing <a name="contributing"></a>
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](../../issues/).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## ⭐️ Show your support <a name="support"></a>
+
+If you like this project, give it a start ⭐️ and a nice comment.
+
+
+## 🙏 Acknowledgments <a name="acknowledgements"></a>
+
+We would like to thank Microverse for this great opportunity.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- LICENSE -->
+
+## 📝 License <a name="license"></a>
 
 This project is [MIT](./MIT.md) licensed.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
