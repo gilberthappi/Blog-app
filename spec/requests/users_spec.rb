@@ -17,12 +17,12 @@ RSpec.describe 'User Management', type: :request do
       expect(response).to have_http_status(:success)
     end
 
-    it 'displays a list of users' do
-      expect(response.body).to include('<h1>A list of users</h1>')
-    end
-
     it 'renders the index template' do
       expect(response).to render_template(:index)
+    end
+
+    it 'displays a list of users' do
+      expect(response.body).to include('<h1>All Users</h1>')
     end
   end
 
@@ -38,7 +38,7 @@ RSpec.describe 'User Management', type: :request do
     end
 
     it 'displays user information and posts' do
-      expect(response.body).to include('<h2>User information and posts</h2>')
+      expect(response.body).to include('<h2>Bio</h2>')
     end
   end
 end
