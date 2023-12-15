@@ -14,9 +14,6 @@ gem 'pg', '~> 1.2'
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '>= 5.0'
 
-# Gemfile
-gem 'error_highlight', '0.6.0'
-
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem 'importmap-rails'
 
@@ -63,9 +60,9 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
-end
 
-gem 'rails-controller-testing'
+  gem 'error_highlight', '>= 0.4.0', platforms: [:ruby]
+end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
