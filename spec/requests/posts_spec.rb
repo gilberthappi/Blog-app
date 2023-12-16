@@ -23,7 +23,7 @@ RSpec.describe 'Posts', type: :request do
     before { get user_posts_path(user) }
 
     it 'includes correct placeholder text in the response body' do
-      expect(response.body).to include("<h2>User's posts</h2>")
+      expect(response.body).to include('<p>Number of posts: 0</p>')
     end
 
     it 'returns a success response' do
@@ -47,7 +47,7 @@ RSpec.describe 'Posts', type: :request do
     end
 
     it 'includes correct placeholder text in the response body' do
-      expect(response.body).to include('<h2>Post information and comments</h2>')
+      expect(response.body).to include('<h3>Sample Post</h3>')
     end
   end
 end
