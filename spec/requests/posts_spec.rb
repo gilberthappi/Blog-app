@@ -47,7 +47,8 @@ RSpec.describe 'Posts', type: :request do
     end
 
     it 'includes correct placeholder text in the response body' do
-      expect(response.body).to include('<h3>Sample Post</h3>')
+      puts "Sample Post ID: #{sample_post.id}"
+      expect(response.body).to include(`"<h3><a href=\"/users/#{user.id}/posts/#{sample_post.id}\">Sample Post</h3>"`)
     end
   end
 end

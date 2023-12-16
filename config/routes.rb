@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  get '/', to: 'users#index'
 
-  resources :user, only: %i[index show] do
-    resources :post, only: %i[index show new create] do
-      resources :comments, only: [:create]
-    end
-  end
-
-  put 'user/:user_id/post/:id/like', to: 'posts#like', as: 'like'
+   root 'users#index'
+      resources :users, only: [:index, :show] do
+      resources :posts, only: [:index, :show, :new, :create] do
+      post 'like', to: 'likes#create', on: :member, as:
+      :like_post
+      resources :comments, only: [:create, :new]
+   end 
+    get 'posts', to: 'posts#index', on: :member, as:
+    :user_posts
+  end 
 end

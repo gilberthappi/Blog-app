@@ -22,9 +22,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: orange;
+  background-color: #f70776;
   margin-right: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #7c73e6;
   border-radius: 10px;
   width: 10%;
 }
@@ -71,7 +71,7 @@
 }
 
 .button {
-  background-color: #007bff;
+  background-color: #7dd87d;
   color: #fff;
   font-weight: bold;
   padding: 10px;

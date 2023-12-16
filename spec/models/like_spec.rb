@@ -1,29 +1,40 @@
 require 'rails_helper'
 
 RSpec.describe Like, type: :model do
-  describe 'Creation' do
-    subject { Comment.new(author_id: 1, post_id: 2) }
+  describe 'associations' do
+    let(:user) { User.create(name: 'Olivia Straub Benites') }
+    let(:post) { Post.create(title: 'Testing Post', author: user) }
 
-    before { subject.save }
+    it 'increments the post likes_counter when a like is created' do
+      Like.create(user:, post:)
 
-    it 'Author id must be an integer' do
-      subject.author_id = 'Janet'
-      expect(subject).to_not be_valid
+      expect(post.reload.likes_counter).to eq(1)
+    end
+  end
+
+  context 'when creating a like' do
+    let(:user) { User.create(name: 'Cesar Molina') }
+    let(:post) { Post.create(title: 'Another Post', author: user) }
+
+    it 'increases the likes_counter of the associated post' do
+      Like.create(user:, post:)
+
+      expect(post.reload.likes_counter).to eq(1)
     end
 
-    it 'author id must be an integer greater or equal to zero' do
-      subject.author_id = -1
-      expect(subject).to_not be_valid
+    it 'does not increase likes_counter for another post' do
+      other_post = Post.create(title: 'Different Post', author: user)
+      Like.create(user:, post: other_post)
+
+      expect(other_post.reload.likes_counter).to eq(1)
     end
 
-    it 'post id must be an integer' do
-      subject.post_id = 'Janet'
-      expect(subject).to_not be_valid
-    end
+    it 'handles likes from different users on the same post' do
+      other_user = User.create(name: 'Bob')
+      Like.create(user: other_user, post:)
+      Like.create(user:, post:)
 
-    it 'post id must be an integer greater or equal to zero' do
-      subject.post_id = -1
-      expect(subject).to_not be_valid
+      expect(post.reload.likes_counter).to eq(2)
     end
   end
 end
