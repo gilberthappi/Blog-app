@@ -1,38 +1,35 @@
-<div class="users-container">
-  <div class="user-card">
-    <div class="user-photo">
-      <%= image_tag @user.photo, alt: "#{ @user.name }'s photo" %>
-    </div>
-    <div class="user-details">
-      <%= link_to @user.name, user_path(@user) %>
-      <p>Number of posts: <%= @user.posts_counter %></p>
-    </div>
-  </div>
-</div>
-
-<div class="user-posts">
-
-  <% @posts.each do |post| %>
-    <div class="post">
-      <h3><%= link_to post.title, user_post_path(@user, post) %></h3>
-      <p><%= post.text %></p>
-      <div class="cmt-like">
-        <span>Comments: <%= post.comments_counter %></span>
-        <span>Likes: <%= post.likes_counter %></span>
+<div class="userContainer flex flex-col gap-8 py-8 w-[80%] mx-auto">
+  <div class="userCard">
+    <a href="#" class="flex flex-row gap-[30px]">
+      <div class="userImage w-[15%]">
+        <img src=<%= @user.photo %>>
       </div>
+      <div class="userDetails bg-[#11537d] rounded-[30px] flex-grow text-white flex justify-between items-center p-[30px]">
+        <h2 class="text-[40px] font-[600]"><%= @user.name %></h2>
+        <p class="self-end text-[20px] font-[400]">Number of posts: <%= @user.posts_counter %></p>
+      </div>
+    </a>
   </div>
-  <div class="user-comments">
-        <div class="comments">
-          <% if post.comments.any? %>
-            <% post.five_most_recent_comments.each do |comment| %>
-              <div class="comment">
-                <p><strong><%= comment.user.name %>:</strong> <%= comment.text %></p>
-              </div>
+  <ul class="userCards flex flex-col gap-8">
+    <% @posts.each do |post| %>
+      <li class="postCard">
+        <a href="<%= user_post_path(@user, post) %>" class="flex flex-col gap-8">
+          <div class="postDetails bg-[#11537d] rounded-[30px] flex-grow text-white flex flex-col p-[30px]">
+            <div>  
+              <h2 class="text-3xl font-semibold"><%= post.title %></h2>
+              <p class="text-md text-center font-medium"><%= post.text %></p>
+            </div> 
+            <p class="self-end">Likes: <%= post.likes_counter %> , comments: <%= post.comments_counter %></p>
+          </div>
+          <ul class="bg-sky-600 rounded-[30px] flex-grow text-white font-medium flex flex-col p-[30px]">
+            <%post.last_five_comments.each do |comment| %>
+              <li>
+                <h3><%= @user.name %>: <%= comment.text %></h3>
+              </li>
             <% end %>
-          <% else %>
-            <p>No comment yet!</p>
-          <% end %>
-        </div>
-      </div>
-  <% end %>
-</div>
+          </ul>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+</div
