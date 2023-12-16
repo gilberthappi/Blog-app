@@ -1,0 +1,9 @@
+<div class="user-card">
+  <div class="user-photo">
+    <%= image_tag user.photo, alt: "#{user.name}'s photo" %>
+  </div>
+  <div class="user-details">
+    <%= link_to user.name, user_path(user) %>
+    <p>Number of posts: <%= user.posts_counter %></p>
+  </div>
+</div>
