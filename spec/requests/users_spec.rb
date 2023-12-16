@@ -1,29 +1,44 @@
 require 'rails_helper'
 
-RSpec.describe 'Users', type: :request do
-  describe 'GET /index' do
-    before(:example) { get '/users' }
-    it 'the request is a success' do
-      expect(response).to have_http_status(:ok)
+RSpec.describe 'User Management', type: :request do
+  let(:sample_user) do
+    User.create(
+      name: 'Ivonne Benites',
+      photo: 'https://example.com/ivonnebenites.jpg',
+      bio: 'Software Engineer',
+      posts_counter: 0
+    )
+  end
+
+  context 'User Index' do
+    before { get users_path }
+
+    it 'responds successfully' do
+      expect(response).to have_http_status(:success)
     end
-    it 'Renders the right template' do
-      expect(response).to render_template('index')
+
+    it 'displays a list of users' do
+      expect(response.body).to include('<h1>A list of users</h1>')
     end
-    it 'Include the correct text' do
-      expect(response.body).to include('Here is a list of all users')
+
+    it 'renders the index template' do
+      expect(response).to render_template(:index)
     end
   end
 
-  describe 'GET /show' do
-    before(:example) { get '/users/:id' }
-    it 'the request is a success' do
-      expect(response).to have_http_status(:ok)
+  context 'User Details' do
+    before { get user_path(sample_user) }
+
+    it 'responds successfully' do
+      expect(response).to have_http_status(:success)
     end
-    it 'Renders the right template' do
-      expect(response).to render_template('show')
+
+    it 'renders the show template' do
+      expect(response).to render_template(:show)
     end
-    it 'Include the correct text' do
-      expect(response.body).to include('Here is data and posts for certain user')
+
+    it 'displays user information and posts' do
+      expect(response.body).to include('<h2>User information and posts</h2>')
     end
   end
 end
