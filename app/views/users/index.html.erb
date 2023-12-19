@@ -1,7 +1,18 @@
-<h1>All Users</h1>
-
-<div class="users-container">
-  <% @users.each do |user| %>
-    <%= render partial: 'user_card', locals: { user: user } %>
-  <% end %>
-</div>
+<section class="background">
+    <h1 class="users-title">Welcome to Users page</h1>
+    <ul>
+      <% @users.each do |user|%>
+        <%= link_to user do %>
+          <li class="card flex hover">
+            <div class="user-image border">
+              <%= image_tag('R.png',  :width => "100px", :heigth=>"100px") %>
+            </div>
+            <div class="user-data border">
+              <h1><%= user.name %></h1>
+              <p class="number-posts">Number of posts: <%= user.post_counter %></p>
+            </div>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>  
+</section>

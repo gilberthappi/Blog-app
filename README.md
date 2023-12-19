@@ -1,114 +1,57 @@
+![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# 🌷 Rails Blog  🌷
+# BlogAppOnRails
 
-# 📗 Table of Contents
+> A blog made by Ruby on Rails
+This is an educational project for learning Ruby on Rails.
 
-- [🌷 Rails Blog  🌷](#-rails-blog--)
-- [📗 Table of Contents](#-table-of-contents)
-- [📖 \[Rails-Blog\] ](#-rails-blog-)
-  - [🛠 Built With ](#-built-with-)
-    - [Tech Stack ](#tech-stack-)
-    - [🌸🌷 Key Features ](#-key-features-)
-  - [💻 Getting Started ](#-getting-started-)
-    - [🌷Setup](#setup)
-  - [🌷 Author ](#-author-)
-  - [🔭🌷 Future Features ](#-future-features-)
-  - [🤝 Contributing ](#-contributing-)
-  - [⭐️ Show your support ](#️-show-your-support-)
-  - [🙏 Acknowledgments ](#-acknowledgments-)
-  - [📝 License ](#-license-)
+## Built With
 
-<!-- PROJECT DESCRIPTION -->
+- Ruby
+- Rails
+- Postgresql
 
-# 📖 [Rails-Blog] <a name="about-project"></a>
-*Rails-Blog* is a blog website which works like a platform that displays several posts. 
-It gives the functionality to add comments and express user's likes on favorite posts.
-<br/>
+## Getting Started
 
-## 🛠 Built With <a name="built-with"></a>
+To run this project, take a copy of the code and follow the instruction below.
 
-### Tech Stack <a name="tech-stack"></a>
+### Prerequisites
 
-<details>
-<summary>Ruby🌷</summary>
-  <ul>
-    <li><a href="https://www.ruby-lang.org/es/">Ruby🌷</a></li>
-  </ul>
-  </details>
-  <details>
-  <summary>Rails🌷</summary>
-  <ul>
-    <li><a href="https://rubyonrails.org/">Rails🌷</a></li>
-  </ul>
-</details>
+You need Ruby v3+, Rails v7+ and Postgresql installed on your machine.
 
-### 🌸🌷 Key Features <a name="key-features"></a>
-- **[Write blog post]**
-- **[Comment on blog post]**
-- **[Like blog posts]**
+### Setup
+
+- Clone the GitHub Repository
+- Go to the Project Directory
+- Run `bundle install`
+
+### Usage
+
+- Run `rails server` to run the app.
+
+## Authors
 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+👤 **Eng. Happi Gilbert**
 
-## 💻 Getting Started <a name="getting-started"></a>
+- GitHub: [@gilberthappi](https://github.com/gilberthappi)
+- Twitter: [@Eng. Happi Gilbert](https://twitter.com/DushimimanaGil3)
+- LinkedIn: [@DUSHIMIMANA GILBERT Happi](https://www.linkedin.com/in/dushimimana-gilbert-happi-997b2a262/)
 
-To get a local copy up and running, follow these steps.
-
-### 🌷Setup
-
-Clone this repository to your desired folder:
-
-
-```sh
-  cd my-folder
-  git clone https://github.com/gilberthappi/Blog-app.git
-```
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## 🌷 Author <a name="author"></a>
-
-🌸**👨‍💻 **Eng Happi**
-
-- GitHub: [@Eng Happi](https://github.com/gilberthappi)
-- Twitter: [@Eng Happi](https://twitter.com/dushimimanagil3)
-- LinkedIn: [@Eng Happi](https://www.linkedin.com/in/dushimimana-gilbert-happi-997b2a262/)
-  
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## 🔭🌷 Future Features <a name="future-features"></a>
-
-- [ ] **[Add more functionalities to the interface design.]**
-  
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## 🤝 Contributing <a name="contributing"></a>
+## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
 
 Feel free to check the [issues page](../../issues/).
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+## Show your support
 
-## ⭐️ Show your support <a name="support"></a>
+Give a ⭐️ if you like this project!
 
-If you like this project, give it a start ⭐️ and a nice comment.
+## Acknowledgments
 
+- Microverse
 
-## 🙏 Acknowledgments <a name="acknowledgements"></a>
-
-We would like to thank Microverse for this great opportunity.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- LICENSE -->
-
-## 📝 License <a name="license"></a>
+## 📝 License
 
 This project is [MIT](./MIT.md) licensed.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-

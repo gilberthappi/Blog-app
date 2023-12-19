@@ -1,40 +1,30 @@
 class PostsController < ApplicationController
-  before_action :set_user, only: %i[index show new create]
-  before_action :set_post, only: [:show]
-
   def index
-    @posts = @user.posts
-  end
-
-  def new
-    @post = @user.posts.build
-  end
-
-  def create
-    @post = @user.posts.new(post_params)
-
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to user_post_path(@user, @post), notice: 'Post was succesfully created.' }
-      else
-        format.html { render :new }
-      end
-    end
+    @user = User.find(params[:user_id])
+    @posts = @user.posts.includes(:comments)
   end
 
   def show
-    @comments = @post.comments
+    @post = Post.find(params[:id])
+  end
+
+  def new
+    @post = Post.new
+  end
+
+  def create
+    @author = User.find(params[:user_id])
+    @post = @author.posts.new(post_params)
+
+    if @post.save
+      redirect_to user_path(id: @post.author_id), notice: 'Post was successfully created'
+
+    else
+      render :new, alert: 'Error ccurred while creating the post'
+    end
   end
 
   private
-
-  def set_user
-    @user = User.find(params[:user_id])
-  end
-
-  def set_post
-    @post = Post.find(params[:id])
-  end
 
   def post_params
     params.require(:post).permit(:title, :text)
