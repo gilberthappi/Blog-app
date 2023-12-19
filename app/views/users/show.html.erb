@@ -16,15 +16,27 @@
 </div>
 
 <div class="user-posts">
-  <% @user.three_most_recent_posts.each do |post| %>
+
     <div class="post">
       <h3><%= link_to post.title, post_path(post) %></h3>
       <p><%= post.text %></p>
       <div class="cmt-like">
         <span>Comments: <%= post.comments_counter %></span>
         <span>Likes: <%= post.likes_counter %></span>
+
+        <% if @user && post %>
+        <%= form_with(model: [@user,
+        post.likes.build], url: like_post_user_post_path(
+          @user,post), method: :post, local: true) do |form|
+            %>
+          <%= form.submit "Like", class: 'button' %>
+          <% end %>
+          <% end %>
       </div>
     </div>
+  <% end %>
+  <% else %>
+  <p>No posts found for this user.</p>
   <% end %>
 
   <%= link_to "See all posts", user_posts_path(@user), class: 'button', remote: true %>
