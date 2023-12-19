@@ -1,1 +1,41 @@
-<h2>User's posts</h2>
+<%= link_to "Create Post", new_user_post_path(@user),
+class: 'button' %>
+
+<div class="users-container">
+  <div class="user-card">
+    <div class="user-photo">
+      <%= image_tag @user.photo, alt: "#{ @user.name }'s photo" %>
+    </div>
+    <div class="user-details">
+      <%= link_to @user.name, user_path(@user) %>
+      <p>Number of posts: <%= @user.posts_counter %></p>
+    </div>
+  </div>
+</div>
+
+<div class="user-posts">
+
+  <% @posts.each do |post| %>
+    <div class="post">
+      <h3><%= link_to post.title, user_post_path(@user, post) %></h3>
+      <p><%= post.text %></p>
+      <div class="cmt-like">
+        <span>Comments: <%= post.comments_counter %></span>
+        <span>Likes: <%= post.likes_counter %></span>
+      </div>
+  </div>
+  <div class="user-comments">
+        <div class="comments">
+          <% if post.comments.any? %>
+            <% post.five_most_recent_comments.each do |comment| %>
+              <div class="comment">
+                <p><strong><%= comment.user.name %>:</strong> <%= comment.text %></p>
+              </div>
+            <% end %>
+          <% else %>
+            <p>No comment yet!</p>
+          <% end %>
+        </div>
+      </div>
+  <% end %>
+</div>

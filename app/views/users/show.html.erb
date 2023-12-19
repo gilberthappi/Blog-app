@@ -1,1 +1,44 @@
-<h2>User information and posts</h2>
+<div class="users-container">
+  <div class="user-card">
+    <div class="user-photo">
+      <%= image_tag @user.photo, alt: "#{ @user.name }'s photo" %>
+    </div>
+    <div class="user-details">
+      <%= link_to @user.name, user_path(@user) %>
+      <p>Number of posts: <%= @user.posts_counter %></p>
+    </div>
+  </div>
+</div>
+
+<div class="user-bio">
+  <h2>Bio</h2>
+  <p><%= @user.bio %></p>
+</div>
+
+<div class="user-posts">
+  <% if @posts.any? %>
+  <% @posts.first(3).each do |post| %>
+    <div class="post">
+      <h3><%= post.title %></h3>
+      <p><%= post.text %></p>
+      <div class="cmt-like">
+        <span>Comments: <%= post.comments_counter %></span>
+        <span>Likes: <%= post.likes_counter %></span>
+
+        <% if @user && post %>
+        <%= form_with(model: [@user,
+        post.likes.build], url: like_post_user_post_path(
+          @user,post), method: :post, local: true) do |form|
+            %>
+          <%= form.submit "Like", class: 'button' %>
+          <% end %>
+          <% end %>
+      </div>
+    </div>
+  <% end %>
+  <% else %>
+  <p>No posts found for this user.</p>
+  <% end %>
+
+  <%= link_to "See all posts", user_posts_path(@user), class: 'button', remote: true %>
+</div>
