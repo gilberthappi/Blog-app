@@ -16,10 +16,9 @@
 </div>
 
 <div class="user-posts">
-  <% if @posts.any? %>
-  <% @posts.first(3).each do |post| %>
+
     <div class="post">
-      <h3><%= post.title %></h3>
+      <h3><%= link_to post.title, post_path(post) %></h3>
       <p><%= post.text %></p>
       <div class="cmt-like">
         <span>Comments: <%= post.comments_counter %></span>
