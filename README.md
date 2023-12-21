@@ -38,10 +38,16 @@ You need Ruby v3+, Rails v7+ and Postgresql installed on your machine.
 - Twitter: [@Eng. Happi Gilbert](https://twitter.com/DushimimanaGil3)
 - LinkedIn: [@DUSHIMIMANA GILBERT Happi](https://www.linkedin.com/in/dushimimana-gilbert-happi-997b2a262/)
 
-👤 *Md.Rafiduzzaman*
+👤 **Md.Rafiduzzaman**
 - GitHub: [@Rafiduzzaman](https://github.com/Rafiduzzaman)
 - Twitter: [@rdzaman](https://twitter.com/rdzaman187468)
 - LinkedIn: [@md-rafiduzzaman-nahin](https://www.linkedin.com/in/md-rafiduzzaman-nahin-7431ab1b4/)
+
+👤 *Ivonne Benites Rodriguez* <br/>
+
+- GitHub: [@githubhandle](https://github.com/IvonneBenitesRodriguez)
+- Twitter: [@twitterhandle](https://twitter.com/IvonneBenitesR)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/ivonnebenites/)
 
 ## 🤝 Contributing
 
