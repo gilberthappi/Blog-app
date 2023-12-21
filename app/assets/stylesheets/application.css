@@ -21,9 +21,11 @@
   padding: 0;
   margin: 0;
 }
-
+body{
+  background-color: #cfc8c8;
+}
 .background {
-  background-color: #fafafa;
+  background-color: #cfc8c8;
 }
 
 :root {
@@ -100,7 +102,7 @@ a {
 }
 
 .hover:hover {
-  background-color: #b5f6ff;
+  background-color: #81dde9;
   transform: scale(1.05);
 }
 
@@ -128,13 +130,13 @@ a {
 
 .bg-green {
   background: #0d7d4d;
-  color: #f1ecea;
+  color: #d3c7c2;
 }
 
 .btn {
   border: 0;
   border-radius: 0.25rem;
-  background: #32393f;
+  background: #708ba3;
   color: white;
   font-size: 1rem;
   line-height: 1.2;

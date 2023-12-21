@@ -16,7 +16,7 @@ end
 
 # Use pg as the database for Active Record in production and staging
 group :production, :staging do
-  gem 'pg', '1.3.5'
+  gem 'pg', '~> 1.5'
 end
 
 # Use the Puma web server [https://github.com/puma/puma]
@@ -75,9 +75,13 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 5.0' # Specify the version you want to use
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
 
 gem 'rubocop', '~> 1.30'
+
+# Update nokogiri to the latest version within the 1.13.x range
+gem 'nokogiri', '~> 1.13'
+
