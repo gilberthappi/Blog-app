@@ -84,4 +84,3 @@ gem 'rubocop', '~> 1.30'
 
 # Update nokogiri to the latest version within the 1.13.x range
 gem 'nokogiri', '~> 1.13'
-
