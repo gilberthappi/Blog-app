@@ -3,6 +3,25 @@ require 'rails_helper'
 RSpec.describe 'users#index', type: :feature do
   describe 'User' do
     before(:each) do
+      @user1 = User.new(name: 'Amy', photo: 'R.png', bio: 'bio', post_counter: 0, email: 'amy@gmail.com',
+                        password: 'password')
+      @user1.skip_confirmation!
+      @user1.save!
+      @user2 = User.new(name: 'Amy', bio: 'bio',
+                        photo: 'Tom.png',
+                        email: 'bany@gmail.com', password: 'password')
+      @user2.skip_confirmation!
+      @user2.save!
+      @user3 = User.new(name: 'Jerry', bio: 'bio',
+                        photo: 'Tom.png',
+                        email: 'jerry@gmail.com', password: 'password')
+      @user3.skip_confirmation!
+      @user3.save!
+      visit root_path
+      fill_in 'Email', with: 'amy@gmail.com'
+      fill_in 'Password', with: 'password'
+      click_button 'Log in'
+    end
 
     it 'Shows the username' do
       expect(page).to have_content('Amy')
