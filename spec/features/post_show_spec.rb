@@ -3,26 +3,6 @@ require 'rails_helper'
 RSpec.describe 'Post show', type: :feature do
   describe 'Post' do
     before(:each) do
-      @user1 = User.new(name: 'Roshan', photo: 'Tom.png', bio: 'bio', post_counter: 0, email: 'a@gmail.com',
-                        password: 'password')
-      @user1.skip_confirmation!
-      @user1.save!
-      @user2 = User.new(name: 'Amy', bio: 'bio',
-                        photo: 'Tom.png',
-                        email: 'b@gmail.com', password: 'password')
-      @user2.skip_confirmation!
-      @user2.save!
-      @user3 = User.new(name: 'Jerry', bio: 'bio',
-                        photo: 'Tom.png',
-                        email: 'jerry@gmail.com', password: 'password')
-      @user3.skip_confirmation!
-      @user3.save!
-
-      visit root_path
-      fill_in 'Email', with: 'amy@gmail.com'
-      fill_in 'Password', with: 'password'
-      click_button 'Log in'
-
       @post1 = Post.create(title: 'First Post', text: 'This is my first post', comments_counter: 0, likes_counter: 0,
                            author: @user1)
       @post2 = Post.create(title: 'Second Post', text: 'This is my second post', comments_counter: 0, likes_counter: 0,
