@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 50 }
   validates :post_counter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  has_one_attached :photo
 
   def recent_posts
     posts.order(created_at: :desc).limit(3)
