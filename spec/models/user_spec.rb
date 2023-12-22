@@ -1,26 +1,30 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  describe 'validations for User model' do
-    before(:each) do
-      @user = User.new(name: 'Tom', photo: 'image.png', bio: 'Teacher from Mexico', post_counter: 0)
-    end
+  it 'is not valid without a name' do
+    user = User.new(name: nil)
+    expect(user).to_not be_valid
+  end
 
-    before { @user.save }
+  it 'is not valid with a negative posts_counter' do
+    user = User.new(posts_counter: -1)
+    expect(user).to_not be_valid
+  end
 
-    it 'if there is name' do
-      @user.name = nil
-      expect(@user).to_not be_valid
-    end
+  describe '#three_most_recent_posts' do
+    it 'returns the three most recent posts' do
+      user = User.create!(name: 'Test User', posts_counter: 0, photo_url: 'https://cdn.pixabay.com/photo/2014/02/27/16/10/flowers-276014_640.jpg')
+      valid_text = 'This is a valid post text.'
 
-    it 'PostCounter must be greater than or equal to zero' do
-      @user.post_counter = -1
-      expect(@user).to_not be_valid
-    end
+      Post.create!(title: 'Old Post', author: user, comments_counter: 0, likes_counter: 0,
+                   text: valid_text, created_at: 5.days.ago)
 
-    it 'PostCounter must be greater than or equal to zero' do
-      @user.post_counter = 5
-      expect(@user).to be_valid
+      recent_posts = 3.times.map do |i|
+        Post.create!(title: "Post #{i}", author: user, comments_counter: 0, likes_counter: 0,
+                     text: valid_text, created_at: i.days.ago)
+      end
+
+      expect(user.three_most_recent_posts).to match_array(recent_posts)
     end
   end
 end

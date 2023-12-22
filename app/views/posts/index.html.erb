@@ -1,43 +1,24 @@
-<h1>List of all posts for <%= @user.name %></h1>
-
-<section>
-  <div class="card flex">
-    <div class="user-image border">
-      <%= image_tag('patrick.jpg',  :width => "100px", :heigth=>"100px") %>
+<div class='user_profile'>
+  <%= render partial: "partials/user_profile", locals: { user: @user } %>
+  <div class='user_posts'>
+  <div class="add_post_btn">
+      <%= link_to 'Add Post', new_user_post_path(@current_user.id) %>
     </div>
-    <div class="user-data border">
-      <h1><%= @user.name %></h1>
-      <p class="number-posts">Number of posts: <%= @user.post_counter %></p>
-      <div class="right">
-        <%= link_to "See all users", users_path, class: "btn" %>
-        <%= link_to "Add a post",new_user_post_path(@user), class: "btn right" %>
-      </div>
-    </div>
-  </div>
-</section>
-<section>
-  <ul>
-    <% @posts.each do |post| %>
-      <%= link_to user_post_path(user_id: post.author_id, id: post.id) do %>
-        <li class="card left">
-          <div class="card">
-            <h2><%= post.title %></h2>
-            <p><%= post.text %></p>
-            <div class="right">
-              <span>Comments: <%= post.comments_counter %></span>
-              <span>Likes: <%= post.likes_counter %> </span>
-            </div>
-          </div>
-          <div class="commets-container">
-            <h4>Comments:</h4>
-            <ul>
-              <% post.recent_comments.each do |comment| %>
-                <p><%= comment.author.name %>: <%= comment.text %></p>
-              <% end %>
-            </ul>
-          </div>
+    <%if @posts.present?%>
+    <ul id='users_list'>
+      <% @posts.each_with_index do |post, index| %>
+        <li class="all_user_post">
+          <%= render partial: "partials/post_item", locals: { post: post, index:index } %>
+          <% comments=post.five_recent_comments %>
+          <%= render partial: "partials/comments_lists", locals: { comments: comments} %>
         </li>
       <% end %>
-    <% end %>
-  </ul>
-</section>
+    </ul>
+  <%else%>
+    <%='No post'%>
+  <%end%>
+  </div>
+  <div>
+    <button class='bg-gray-700 text-white py-2 px-6 rounded'>Pagination</button>
+  </div>
+</div>

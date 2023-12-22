@@ -1,22 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Like, type: :model do
-  describe 'Validations For the Like model' do
-    before(:each) do
-      @like = Like.new(author_id: 2, post_id: 7)
-    end
+  it 'should have valid user, post and update likes_counter in post object' do
+    user = User.create(id: 13, name: 'Fatema', photo_url: 'https://cdn.pixabay.com/photo/2014/02/27/16/10/flowers-276014_640.jpg',
+                       bio: 'Teacher from Congo', posts_counter: 0)
+    post = Post.create(author_id: user.id, title: 'Hello', text: 'This is my first post', comments_counter: 0,
+                       likes_counter: 0)
+    like = Like.create(post:, user:)
 
-    before { @like.save }
-
-    it 'if author_id is present' do
-      @like.author_id = false
-      expect(@like).to_not be_valid
-    end
-
-    it 'if post_id is present' do
-      @like.post_id = nil
-      @like.author_id = nil
-      expect(@like).to_not be_valid
-    end
+    expect(like).to be_valid
+    expect(post.likes_counter).to eq(1)
   end
 end

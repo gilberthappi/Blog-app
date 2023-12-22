@@ -1,0 +1,10 @@
+<%= form_with model: @comment, url: user_post_comments_path(@current_user.id, @post.id), method: :post, class: 'border-4 border-pink-900', local: true do |f| %>
+  <div>
+    <%= f.label :text, class: 'font-bold' %><br>
+    <%= f.text_area :text, class: 'rounded border-2 border-gray-300' %>
+  </div>
+  <div>
+    <%= f.submit 'Comment', class: 'bg-pink-900 text-white border-4 border-pink-900 text-white cursor-pointer py-2 px-4' %>
+  </div>
+<% end %>
+<%= render partial: "partials/errors", locals: { errors: @comment.errors } %>

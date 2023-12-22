@@ -178,7 +178,6 @@ GEM
     reline (0.3.1)
       io-console (~> 0.5)
     rexml (3.2.5)
-    rspec-support (3.12.1)
     rubocop (1.30.0)
       parallel (~> 1.10)
       parser (>= 3.1.0.0)
@@ -250,7 +249,6 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 7.0.3)
   rails-controller-testing
-  rspec-support (= 3.12.1)
   rubocop (~> 1.30)
   selenium-webdriver
   sprockets-rails

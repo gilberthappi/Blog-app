@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Blog-App</title>
+    <title>Rails Blog</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
-  <body class="container center">
-      <% flash.each do |name, msg| -%>
-      <p class="card bg-green"><%= msg %></p>
-    <% end -%>
-    <%= yield %>
+  <body>
+    <div class="container mx-auto py-4">
+      <%= yield %>
+    </div>
   </body>
 </html>

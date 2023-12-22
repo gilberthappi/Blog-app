@@ -5,4 +5,3 @@ class ApplicationJob < ActiveJob::Base
   # Most jobs are safe to ignore if the underlying records are no longer available
   # discard_on ActiveJob::DeserializationError
 end
-# Ensure there is a newline character at the end of the file

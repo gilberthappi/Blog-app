@@ -1,0 +1,19 @@
+<div class=''>
+<h4 class='text-xl bp-3 text-pink-900'>
+<%= link_to user_post_path(post.author, post) do %>
+  <div class='py-2 text-pink-900'>
+    <span class='text-pink-900'>Post <%=index + 1%> - </span>
+    <%= post.title %>
+  </div>
+<% end %>
+</h4>
+  <div class=''>
+    <div class=''>
+      <%=post.text%>
+    </div>
+    <div class='text-sm text-pink-600'>
+      <span>Comment: <%=post.comments_counter%>, </span>
+      <span>Like: <%=post.likes_counter%> </span>
+    </div>
+  </div>
+</div>

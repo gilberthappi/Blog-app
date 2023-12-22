@@ -2,12 +2,12 @@
 
 one:
   name: MyString
-  photo: MyString
+  photo_url: MyString
   bio: MyText
-  post_counter: 1
+  posts_counter: 1
 
 two:
   name: MyString
-  photo: MyString
+  photo_url: MyString
   bio: MyText
-  post_counter: 1
+  posts_counter: 1
