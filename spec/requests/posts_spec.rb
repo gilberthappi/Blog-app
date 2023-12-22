@@ -1,38 +1,42 @@
 require 'rails_helper'
 
-RSpec.describe 'Posts', type: :request do
-  describe 'GET /index' do
-    before :each do
-      get '/users/1/posts'
-    end
-    it 'returns success status' do
-      expect(response).to have_http_status(:success)
+RSpec.describe Post, type: :model do
+  describe 'For the Post model' do
+    before(:each) do
+      @user = User.new(name: 'Tom', photo: 'image.png', bio: 'Teacher from Mexico', post_counter: 0)
+      @post = Post.new(author: @user, title: 'Test', text: 'testing', likes_counter: 7, comments_counter: 5)
     end
 
-    it 'renders index' do
-      expect(response).to render_template(:index)
+    before { @post.save }
+
+    it 'if there is title' do
+      @post.title = true
+      expect(@post).to be_valid
     end
 
-    it 'include the correct placeholder text' do
-      expect(response.body).to include('Number of posts:')
-    end
-  end
-
-  describe 'GET /show' do
-    before :each do
-      get '/users/1/posts/1'
+    it 'if there is max 250 characters' do
+      @post.title = 'Testing'
+      expect(@post).to be_valid
     end
 
-    # it 'returns code 200' do
-    #   expect(response).to have_http_status(:success)
-    # end
+    it 'if likes counter is integer' do
+      @post.likes_counter = 5
+      expect(@post).to be_valid
+    end
 
-    # it 'renders show' do
-    #   expect(response).to render_template('posts/show')
-    # end
+    it 'if likes counter greater than or equal to zero' do
+      @post.likes_counter = -9
+      expect(@post).to_not be_valid
+    end
 
-    # it 'response body has the right placeholder' do
-    #   expect(response.body).to include('Post#show')
-    # end
+    it 'if comments counter greater than or equal to zero.' do
+      @post.comments_counter = -5
+      expect(@post).to_not be_valid
+    end
+
+    it 'if comments counter is integer' do
+      @post.comments_counter = 8
+      expect(@post).to be_valid
+    end
   end
 end
