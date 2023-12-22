@@ -90,9 +90,10 @@ You need Ruby v3+, Rails v7+ and Postgresql installed on your machine.
 ### Usage
 
 - Run `rails server` to run the app.
+- Run `rspec` to run the test cases.
+
 
 ## Authors
-
 
 👤 **Eng. Happi Gilbert**
 
@@ -110,6 +111,13 @@ You need Ruby v3+, Rails v7+ and Postgresql installed on your machine.
 - GitHub: [@githubhandle](https://github.com/IvonneBenitesRodriguez)
 - Twitter: [@twitterhandle](https://twitter.com/IvonneBenitesR)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/ivonnebenites/)
+
+## 🔭 Future Features <a name="future-features"></a>
+
+- Implement user authentication and authorization.
+- Add a commenting system to allow users to leave comments on blog posts.
+- Enhance the user interface with responsive design for a better user experience.
+
 
 ## 🤝 Contributing
 
