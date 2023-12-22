@@ -1,43 +1,25 @@
-<div class="users-container">
-  <div class="user-card">
-    <div class="user-photo">
-      <%= image_tag @user.photo, alt: "#{ @user.name }'s photo" %>
+<div class=''>
+    <%= render partial: 'partials/user_profile', locals: { user: @user } %>
+    <div class='mb-4'>
+        <h3 class='text-xl bp-3 text-pink-700 font-bold'>Bio <h3>
+        <div class='text-pink-400 border-b-2 border-pink-200 pb-3'>
+            <%=@user.bio%>
+        </div>
+        <div class="add_post_btn m-4">
+            <%= link_to 'Add Post', new_user_post_path(@current_user), class: 'bg-pink-800 text-white py-2 px-6 rounded' %>
+        </div>
     </div>
-    <div class="user-details">
-      <%= link_to @user.name, user_path(@user) %>
-      <p>Number of posts: <%= @user.posts_counter %></p>
+    <div class='mb-4'>
+        <h3 class='text-xl bp-4 text-pink-700'>Posts<h3>
+        <ul class='flex flex-col gap-2'>
+            <% @user.three_most_recent_posts.each_with_index do |post, index| %>
+                <li>
+                    <%= render partial: 'partials/post_item', locals: { post: post, index:index } %>
+                </li>
+            <% end %>
+        </ul>
     </div>
-  </div>
-</div>
-
-<div class="user-bio">
-  <h2>Bio</h2>
-  <p><%= @user.bio %></p>
-</div>
-
-<div class="user-posts">
-
-    <div class="post">
-      <h3><%= link_to post.title, post_path(post) %></h3>
-      <p><%= post.text %></p>
-      <div class="cmt-like">
-        <span>Comments: <%= post.comments_counter %></span>
-        <span>Likes: <%= post.likes_counter %></span>
-
-        <% if @user && post %>
-        <%= form_with(model: [@user,
-        post.likes.build], url: like_post_user_post_path(
-          @user,post), method: :post, local: true) do |form|
-            %>
-          <%= form.submit "Like", class: 'button' %>
-          <% end %>
-          <% end %>
-      </div>
+    <div>
+        <%= link_to 'See all posts', user_posts_path(@user.id), method: :get, class: 'bg-pink-800 text-white py-2 px-6 rounded'%>
     </div>
-  <% end %>
-  <% else %>
-  <p>No posts found for this user.</p>
-  <% end %>
-
-  <%= link_to "See all posts", user_posts_path(@user), class: 'button', remote: true %>
 </div>

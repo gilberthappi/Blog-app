@@ -1,55 +1,20 @@
-<div class="users-container">
-  <div class="user-card">
-    <div class="user-photo">
-      <%= image_tag @user.photo, alt: "#{ @user.name }'s 
-      photo" %>
-    </div>
-    <div class="user-details">
-      <%= link_to @user.name, user_path(@user) %>
-      <p>Number of posts: <%= @user.posts_counter %></p>
-    </div>
-   </div>
- </div>
- 
- <div class="user-bio">
-    <h2>Bio</h2>
-    <p><%= @user.bio %></p>
+<div class="user-list">
+  <div class="flex justify-between">
+    <h3 class="text-2xl"><%= "Post ##{@post.id} by #{@author.name}" %></h3>
+     <p class="text-sm text-gray-500">Comments: <%= @post.comments.count %>, Like: <%= @post.likes.count %></p></div>
+  <div class="py-4">
+    <h3 class="text-3xl"><%= @post.title %></h3>
+  <p><%= @post.text %></p>
   </div>
-
-<div class="user-posts">
-  <div class="post">
-    <h3><%= link_to @post.title, user_post_path(@user, @post)
-    %></h3>
-    <p><%= @post.text %></p>
-    <div class="cmt-like">
-      <span>Comments: <%= @post.comments_counter %>
-      </span>
-      <span>Likes: <%= @post.likes_counter %>
-      </span>
-    </div>
-    
-    <%= form_with(model: [@user, @post.likes.build], url:
-    like_post_user_post_path(@user, @post), method: :post,
-    local: true) do |form| %>
-      <%= form.submit "Like", class: 'button' %>
-      <% end %>
-    </div>
-
-  <div class="user-comments">
-    <div class="comments">
-
-    <%= render partial: 'comments/form', locals: {
-      post: @post, comment: Comment.new } %>
-
-      <% if @comments.any? %>
-        <% @comments.each do |comment| %>
-          <div class="comment">
-            <p><strong><%= comment.user.name %>:</strong> <%= comment.text %></p>
-          </div>
-        <% end %>
-      <% else %>
-        <p>No comments yet!</p>
-      <% end %>
-    </div>
+  <div class="">
+    <%=button_to 'Like', user_post_likes_path(@current_user.id, @post), method: :post ,  class:' px-4 bg-pink-900 text-white border-4 border-pink-900 text-white'%>
   </div>
+  <div class="mt-4">
+    <%= render 'comments/new' %>
+  </div>
+  <ul>
+    <% @post.comments.includes([:user]) do |comment| %>
+    <li><%= "#{comment.user.name}: #{comment.text}" %></li>
+    <% end %>
+  </ul>
 </div>

@@ -1,21 +1,19 @@
 source 'https://rubygems.org'
 
-ruby '3.1.4'
+ruby '3.2.2'
 
+gem 'rubocop', '>= 1.0', '< 2.0'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.1.2'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
-# Use Postgres as the database for Active Record
-gem 'pg', '~> 1.2'
+# Use postgresql as the database for Active Record
+gem 'pg', '~> 1.1'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '>= 5.0'
-
-# Gemfile
-gem 'error_highlight', '0.6.0'
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem 'importmap-rails'
@@ -48,10 +46,9 @@ gem 'bootsnap', require: false
 # gem "image_processing", "~> 1.2"
 
 group :development, :test do
+  gem 'rspec-rails'
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri windows]
-  gem 'rspec-rails', '~> 5.0'
-  gem 'rubocop', require: false
 end
 
 group :development do
@@ -65,10 +62,10 @@ group :development do
   # gem "spring"
 end
 
-gem 'rails-controller-testing'
-
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
   gem 'selenium-webdriver'
 end

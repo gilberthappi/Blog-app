@@ -1,41 +1,24 @@
-<%= link_to "Create Post", new_user_post_path(@user),
-class: 'button' %>
-
-<div class="users-container">
-  <div class="user-card">
-    <div class="user-photo">
-      <%= image_tag @user.photo, alt: "#{ @user.name }'s photo" %>
+<div class='user_profile'>
+  <%= render partial: "partials/user_profile", locals: { user: @user } %>
+  <div class='user_posts'>
+  <div class="add_post_btn">
+      <%= link_to 'Add Post', new_user_post_path(@current_user.id) %>
     </div>
-    <div class="user-details">
-      <%= link_to @user.name, user_path(@user) %>
-      <p>Number of posts: <%= @user.posts_counter %></p>
-    </div>
+    <%if @posts.present?%>
+    <ul id='users_list'>
+      <% @posts.each_with_index do |post, index| %>
+        <li class="all_user_post">
+          <%= render partial: "partials/post_item", locals: { post: post, index:index } %>
+          <% comments=post.five_recent_comments %>
+          <%= render partial: "partials/comments_lists", locals: { comments: comments} %>
+        </li>
+      <% end %>
+    </ul>
+  <%else%>
+    <%='No post'%>
+  <%end%>
   </div>
-</div>
-
-<div class="user-posts">
-
-  <% @posts.each do |post| %>
-    <div class="post">
-      <h3><%= link_to post.title, user_post_path(@user, post) %></h3>
-      <p><%= post.text %></p>
-      <div class="cmt-like">
-        <span>Comments: <%= post.comments_counter %></span>
-        <span>Likes: <%= post.likes_counter %></span>
-      </div>
+  <div>
+    <button class='bg-gray-700 text-white py-2 px-6 rounded'>Pagination</button>
   </div>
-  <div class="user-comments">
-        <div class="comments">
-          <% if post.comments.any? %>
-            <% post.five_most_recent_comments.each do |comment| %>
-              <div class="comment">
-                <p><strong><%= comment.user.name %>:</strong> <%= comment.text %></p>
-              </div>
-            <% end %>
-          <% else %>
-            <p>No comment yet!</p>
-          <% end %>
-        </div>
-      </div>
-  <% end %>
 </div>

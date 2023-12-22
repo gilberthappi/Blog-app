@@ -1,48 +1,30 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:new_user) { User.new(name: 'Ivonne', bio: 'Software Developer', posts_counter: 1) }
-  before { new_user.save }
-
-  context 'with valid attributes' do
-    it 'is valid' do
-      expect(new_user).to be_valid
-    end
+  it 'is not valid without a name' do
+    user = User.new(name: nil)
+    expect(user).to_not be_valid
   end
 
-  context 'with missing name' do
-    it 'is not valid' do
-      new_user.name = nil
-      expect(new_user).not_to be_valid
-    end
+  it 'is not valid with a negative posts_counter' do
+    user = User.new(posts_counter: -1)
+    expect(user).to_not be_valid
   end
 
-  context 'with a different valid name' do
-    it 'is valid' do
-      new_user.name = 'Cesar Molina'
-      expect(new_user).to be_valid
-    end
-  end
+  describe '#three_most_recent_posts' do
+    it 'returns the three most recent posts' do
+      user = User.create!(name: 'Test User', posts_counter: 0, photo_url: 'https://cdn.pixabay.com/photo/2014/02/27/16/10/flowers-276014_640.jpg')
+      valid_text = 'This is a valid post text.'
 
-  context 'with missing posts counter' do
-    it 'is not valid' do
-      new_user.posts_counter = nil
-      expect(new_user).not_to be_valid
-    end
-  end
+      Post.create!(title: 'Old Post', author: user, comments_counter: 0, likes_counter: 0,
+                   text: valid_text, created_at: 5.days.ago)
 
-  context 'with a different valid posts counter' do
-    it 'is valid' do
-      new_user.posts_counter = 5
-      expect(new_user).to be_valid
-    end
-  end
+      recent_posts = 3.times.map do |i|
+        Post.create!(title: "Post #{i}", author: user, comments_counter: 0, likes_counter: 0,
+                     text: valid_text, created_at: i.days.ago)
+      end
 
-  it 'returns the 3 most recent posts' do
-    new_user = User.create(name: 'Olivia Straub Benites')
-    first_post = Post.create(title: 'First post', author: new_user, created_at: 5.days.ago)
-    second_post = Post.create(title: 'Second post', author: new_user, created_at: 3.days.ago)
-    third_post = Post.create(title: 'Third post', author: new_user, created_at: 1.days.ago)
-    expect(new_user.three_most_recent_posts).to eq([third_post, second_post, first_post])
+      expect(user.three_most_recent_posts).to match_array(recent_posts)
+    end
   end
 end

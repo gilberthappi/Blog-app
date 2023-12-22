@@ -1,44 +1,43 @@
 require 'rails_helper'
 
-RSpec.describe 'User Management', type: :request do
-  let(:sample_user) do
-    User.create(
-      name: 'Ivonne Benites',
-      photo: 'https://example.com/ivonnebenites.jpg',
-      bio: 'Software Engineer',
-      posts_counter: 0
-    )
-  end
+RSpec.describe UsersController, type: :request do
+  describe 'GET /index' do
+    before :each do
+      get '/users'
+    end
 
-  context 'User Index' do
-    before { get users_path }
-
-    it 'responds successfully' do
+    it 'returns success status' do
       expect(response).to have_http_status(:success)
     end
 
-    it 'renders the index template' do
+    it 'renders index view' do
       expect(response).to render_template(:index)
     end
 
-    it 'displays a list of users' do
-      expect(response.body).to include('<h1>All Users</h1>')
+    it 'include the correct placeholder text' do
+      expect(response.body).to include('Number of posts:')
     end
   end
 
-  context 'User Details' do
-    before { get user_path(sample_user) }
+  describe 'GET /show' do
+    def valid_attributes
+      { name: 'Fatema', bio: 'Fatema\'s bio', posts_counter: 0 }
+    end
+    let(:user) { User.create! valid_attributes }
 
-    it 'responds successfully' do
+    it 'returns success status' do
+      get user_url(user)
       expect(response).to have_http_status(:success)
     end
 
-    it 'renders the show template' do
+    it 'renders show view' do
+      get user_path(user)
       expect(response).to render_template(:show)
     end
 
-    it 'displays user information and posts' do
-      expect(response.body).to include('<h2>Bio</h2>')
+    it 'include the correct placeholder text' do
+      get user_path(user)
+      expect(response.body).to include('Number of posts:')
     end
   end
 end
