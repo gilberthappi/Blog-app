@@ -1,18 +1,20 @@
-class User < ApplicationRecord
-  has_many :posts, foreign_key: 'author_id', dependent: :destroy
-  has_many :comments, dependent: :destroy
-  has_many :likes, dependent: :destroy
+# class User < ApplicationRecord
+#   # Include default devise modules. Others available are:
+#   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+#   devise :database_authenticatable, :registerable,
+#          :recoverable, :rememberable, :validatable
+#   # Include default devise modules. Others available are:
+#   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+#   devise :database_authenticatable, :registerable,
+#          :recoverable, :rememberable, :validatable, :confirmable
+#   has_many :posts, foreign_key: :author_id, dependent: :destroy
+#   has_many :comments, foreign_key: :author_id, dependent: :destroy
+#   has_many :likes, foreign_key: :author_id, dependent: :destroy
 
-  validates :name, presence: true
-  validates :posts_counter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
-  validates :photo_url, allow_blank: true, format: { with: %r{\Ahttps?://.*\z}, message: 'must be a valid URL' }
-  validates :bio, length: { maximum: 500 }
+#   validates :name, presence: true, length: { maximum: 50 }
+#   validates :post_counter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
-  def three_most_recent_posts
-    posts.includes(:author).order(created_at: :desc).limit(3)
-  end
-
-  def update_posts_counter
-    update(posts_counter: posts.count)
-  end
-end
+#   def recent_posts
+#     posts.order(created_at: :desc).limit(3)
+#   end
+# end
