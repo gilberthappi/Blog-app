@@ -77,6 +77,6 @@ end
 
 gem 'cancancan', '~> 3.1'
 gem 'devise', '~> 4.8', '>= 4.8.1'
+gem 'jwt'
 gem 'nokogiri', '~> 1.13', '>= 1.13.7'
 gem 'rubocop', '~> 1.30'
-gem 'jwt'
